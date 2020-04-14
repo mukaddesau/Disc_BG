@@ -217,7 +217,8 @@ def run(config):
   # Sample random sheet
   if config['sample_random']:
     print('Preparing random sample sheet...')
-    images, labels = sample()    
+    images, labels = sample()
+    print("labels size", images[1,:,:,:].shape)    
     torchvision.utils.save_image(images.float(),
                                  '%s/%s/random_samples.jpg' % (config['samples_root'], experiment_name),
                                  nrow=int(G_batch_size**0.5),
