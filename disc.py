@@ -218,7 +218,7 @@ def run(config):
   if config['sample_random']:
     print('Preparing random sample sheet...')
     images, labels = sample()
-    print("labels size", images[1,:,:,:].shape)    
+    print("labels size", labels)    
     torchvision.utils.save_image(images.float(),
                                  '%s/%s/random_samples.jpg' % (config['samples_root'], experiment_name),
                                  nrow=int(G_batch_size**0.5),
@@ -267,7 +267,7 @@ def run(config):
       patch_replication_callback(GD)
 
   
-  D_fake = D(images,labels)
+  D_fake = D(images[1,:,:,:],labels[0])
   print("D_fake ",D_fake)
 if __name__ == '__main__':
   main()
